@@ -1,11 +1,56 @@
-// Sets the length of the "Select"
+// Sets the length of the "Select" field for character length
 var setPwLenght = document.getElementById("pwLength");
 
-for(var i=8; i<=128; i++) {
+for (var i = 8; i <= 128; i++) {
     var option = document.createElement("option");
     option.text = i;
     setPwLenght.add(option);
  }
-    
 
-//prompt("Please type in the desired length for your password. It must be between 8 and 128 characters.");
+ // Makes sure at least one checkbox is selected
+ function validateForm() {
+     var checkbox = document.getElementsByClassName('form-check-input');
+     var isChecked = false;
+     for (var i = 0; i < checkbox.length; i++) {
+        if (checkbox[i].checked) {
+            isChecked = true;
+        }
+     };
+     if (isChecked) {
+        passwordGen();
+     } else {
+         alert("Please check at least one option!");
+     };  
+}
+ function passwordGen() {
+    var newPassword = ""; // this variable will hold the generated password
+    var getPwlength = document.getElementById("pwLength").value; // sets the condition for the 'for' loop
+
+    // strings that hold the characters to be used in the password
+    var specialCharSet = "!@#$%^&*().;:?";
+    var numberCharSet = "0123456789";
+    var lowerCharSet = "qwertyuiopasdfghjklzxcvbnm";
+    var upperCharSet = "QWERTYUIOPASDFGHJKLZXCVBNM";
+
+    // checks which boxes are checked or not
+    var ScChecked = document.getElementById("specialChar").checked;
+    var NcChecked = document.getElementById("numbers").checked;
+    var LcChecked = document.getElementById("lowercaseLetters").checked;
+    var UcChecked = document.getElementById("uppercaseLetters").checked;
+    
+    // this loop will assign a value to the 'newPassword' variable
+    for (var i = 0; i < getPwlength; i++) {
+        if (LcChecked) {
+            newPassword += lowerCharSet.charAt(Math.floor(Math.random()*lowerCharSet.length));
+        }
+        if (NcChecked) {
+            newPassword += numberCharSet.charAt(Math.floor(Math.random()*numberCharSet.length));
+        }  
+       //getPwlength--;
+    }
+
+    document.getElementById("newPW").innerHTML = "Your new password is "+newPassword;
+    //alert(newPassword);
+   // alert(lowerC+upperC+specialC+numberC+"char length"+getPwlength);
+ }
+

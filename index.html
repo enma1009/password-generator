@@ -11,11 +11,10 @@
     <title>Password Generator</title>
   </head>
   <body>
-    <h1 class="text-center">Password Generator</h1>
+    <h1 class="text-center">Random Password Generator</h1>
 
-    <div class="container">
-      <h2>Generate a password</h2>
-
+    <div class="container shadow-sm p-5 mb-5 bg-light rounded">
+      
       <form>
         <div class="form-group">
           <label for="pwLength">Select a character length for your password:</label>
@@ -41,10 +40,14 @@
             <label class="form-check-label" for="uppercaseLetters">Uppercase letters</label>
           </div>
       </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Generate Password</button>
-        </div>
+        <!-- <div class="form-group">
+          <button type="submit" class="btn btn-primary" onclick="validateForm();">Generate Password</button>
+        </div> -->
       </form>
+
+      <button type="submit" class="btn btn-primary" onclick="validateForm();">Generate Password</button>
+
+      <p id="newPW" class="mt-4 font-weight-bold">Your new password will appear here.</p>
 
     </div>
 
