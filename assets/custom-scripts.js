@@ -26,12 +26,6 @@ for (var i = 8; i <= 128; i++) {
     var newPassword = ""; // this variable will hold the generated password
     var getPwlength = document.getElementById("pwLength").value; // sets the condition for the 'for' loop
 
-    // strings that hold the characters to be used in the password
-    var specialCharSet = "!@#$%^&*().;:?";
-    var numberCharSet = "0123456789";
-    var lowerCharSet = "qwertyuiopasdfghjklzxcvbnm";
-    var upperCharSet = "QWERTYUIOPASDFGHJKLZXCVBNM";
-
     // checks which boxes are checked or not
     var ScChecked = document.getElementById("specialChar").checked;
     var NcChecked = document.getElementById("numbers").checked;
@@ -39,43 +33,39 @@ for (var i = 8; i <= 128; i++) {
     var UcChecked = document.getElementById("uppercaseLetters").checked;
 
     // creates a custom string with the value of the checked boxes
-    var finalCharSet = function(s,n,l,u) {
-        var finalString = "";
+    var finalCharSet = "";
+
+    function finalString(s,n,l,u) {
+        // strings that hold the characters to be used in the password
+        var specialCharSet = "!@#$%^&*().;:?";
+        var numberCharSet = "0123456789";
+        var lowerCharSet = "qwertyuiopasdfghjklzxcvbnm";
+        var upperCharSet = "QWERTYUIOPASDFGHJKLZXCVBNM";
+        var x = "";
         if(s) {
-            finalString += specialCharSet;
+            x += specialCharSet;
         };
         if(n) {
-            finalString += numberCharSet;
+            x += numberCharSet;
         };
         if(l) {
-            finalString += lowerCharSet;
+            x += lowerCharSet;
         };
         if(u) {
-            finalString += upperCharSet;
+            x += upperCharSet;
         }
-        return finalString;
+        console.log(x);
+        return x;
     };
     
-    finalCharSet(ScChecked,NcChecked,LcChecked,UcChecked);
+    finalCharSet=finalString(ScChecked,NcChecked,LcChecked,UcChecked); // Callback function to generate the final string
     console.log(finalCharSet);
 
-    //alert(finalCharSet(ScChecked,NcChecked,LcChecked,UcChecked));
-    
     // this loop will assign a value to the 'newPassword' variable
     for (var i = 0; i < getPwlength; i++) {
-
         newPassword += finalCharSet.charAt(Math.floor(Math.random()*finalCharSet.length));
-        /* if (LcChecked) {
-            newPassword += lowerCharSet.charAt(Math.floor(Math.random()*lowerCharSet.length));
-        }
-        if (NcChecked) {
-            newPassword += numberCharSet.charAt(Math.floor(Math.random()*numberCharSet.length));
-        }   */
-       //getPwlength--;
     }
 
     document.getElementById("newPW").innerHTML = "Your new password is "+newPassword;
-    //alert(newPassword);
-   // alert(lowerC+upperC+specialC+numberC+"char length"+getPwlength);
  }
 
