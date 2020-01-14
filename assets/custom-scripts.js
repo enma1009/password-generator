@@ -65,7 +65,11 @@ for (var i = 8; i <= 128; i++) {
     for (var i = 0; i < getPwlength; i++) {
         newPassword += finalCharSet.charAt(Math.floor(Math.random()*finalCharSet.length));
     }
-
-    document.getElementById("newPW").innerHTML = "Your new password is "+newPassword;
+    document.getElementById("newPW").innerHTML = "Your new password is "+newPassword; // Displays the new password
+    
+    // adds the button to copy new password to clipboard - UNFINISHED, DOES NOT WORK YET
+    var btn = document.createElement("button");
+    btn.innerHTML = "Copy to Clipboard";
+    document.body.getElementsByClassName("container").appendChild(btn);
  }
 
