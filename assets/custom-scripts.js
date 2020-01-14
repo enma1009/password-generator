@@ -54,7 +54,6 @@ for (var i = 8; i <= 128; i++) {
         if(u) {
             x += upperCharSet;
         }
-        console.log(x);
         return x;
     };
     
@@ -70,6 +69,6 @@ for (var i = 8; i <= 128; i++) {
     // adds the button to copy new password to clipboard - UNFINISHED, DOES NOT WORK YET
     var btn = document.createElement("button");
     btn.innerHTML = "Copy to Clipboard";
-    document.body.getElementsByClassName("container").appendChild(btn);
+    document.body.getElementById("newPasswordContainer").appendChild(btn);
  }
 
