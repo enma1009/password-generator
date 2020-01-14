@@ -37,15 +37,40 @@ for (var i = 8; i <= 128; i++) {
     var NcChecked = document.getElementById("numbers").checked;
     var LcChecked = document.getElementById("lowercaseLetters").checked;
     var UcChecked = document.getElementById("uppercaseLetters").checked;
+
+    // creates a custom string with the value of the checked boxes
+    var finalCharSet = function(s,n,l,u) {
+        var finalString = "";
+        if(s) {
+            finalString += specialCharSet;
+        };
+        if(n) {
+            finalString += numberCharSet;
+        };
+        if(l) {
+            finalString += lowerCharSet;
+        };
+        if(u) {
+            finalString += upperCharSet;
+        }
+        return finalString;
+    };
+    
+    finalCharSet(ScChecked,NcChecked,LcChecked,UcChecked);
+    console.log(finalCharSet);
+
+    //alert(finalCharSet(ScChecked,NcChecked,LcChecked,UcChecked));
     
     // this loop will assign a value to the 'newPassword' variable
     for (var i = 0; i < getPwlength; i++) {
-        if (LcChecked) {
+
+        newPassword += finalCharSet.charAt(Math.floor(Math.random()*finalCharSet.length));
+        /* if (LcChecked) {
             newPassword += lowerCharSet.charAt(Math.floor(Math.random()*lowerCharSet.length));
         }
         if (NcChecked) {
             newPassword += numberCharSet.charAt(Math.floor(Math.random()*numberCharSet.length));
-        }  
+        }   */
        //getPwlength--;
     }
 
