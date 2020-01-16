@@ -8,12 +8,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <script src="https://kit.fontawesome.com/5d739e369e.js" crossorigin="anonymous"></script>
+
     <title>Password Generator</title>
   </head>
   <body>
-    <h1 class="text-center">Random Password Generator</h1>
-
+    
     <div class="container shadow-sm p-5 mb-5 bg-light rounded">
+
+      <span style="font-size: 48px; color: Dodgerblue;">
+        <i class="fas fa-key"></i>
+      </span>
+      
+      <h1>Simple Password Generator</h1>
       
       <form>
         <div class="form-group">
@@ -39,17 +46,19 @@
             <input class="form-check-input" type="checkbox" id="uppercaseLetters" value="uppercase">
             <label class="form-check-label" for="uppercaseLetters">Uppercase letters</label>
           </div>
-      </div>
-        <!-- <div class="form-group">
-          <button type="submit" class="btn btn-primary" onclick="validateForm();">Generate Password</button>
-        </div> -->
+        </div>
       </form>
 
       <button type="submit" class="btn btn-primary" onclick="validateForm();">Generate Password</button>
 
-      <div id="newPasswordContainer">
+      <div id="newPasswordContainer" class="d-none">
 
-        <p id="newPW" class="mt-4 font-weight-bold">Your new password will appear here.</p>
+        <div class="form-row mt-4">
+          <div class="form-group col-12">
+            <textarea class="form-control" id="newPW" placeholder="New Password" rows="2"></textarea>
+            <button type="submit" class="btn btn-outline-primary mt-4" id="copyBtn">Copy to Clipboard</button>
+          </div>
+        </div>
 
       </div>
 

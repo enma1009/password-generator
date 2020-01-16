@@ -5,7 +5,7 @@ for (var i = 8; i <= 128; i++) {
     var option = document.createElement("option");
     option.text = i;
     setPwLenght.add(option);
- }
+ };
 
  // Makes sure at least one checkbox is selected
  function validateForm() {
@@ -21,7 +21,8 @@ for (var i = 8; i <= 128; i++) {
      } else {
          alert("Please check at least one option!");
      };  
-}
+};
+
  function passwordGen() {
     var newPassword = ""; // this variable will hold the generated password
     var getPwlength = document.getElementById("pwLength").value; // sets the condition for the 'for' loop
@@ -63,12 +64,19 @@ for (var i = 8; i <= 128; i++) {
     // this loop will assign a value to the 'newPassword' variable
     for (var i = 0; i < getPwlength; i++) {
         newPassword += finalCharSet.charAt(Math.floor(Math.random()*finalCharSet.length));
-    }
-    document.getElementById("newPW").innerHTML = "Your new password is "+newPassword; // Displays the new password
-    
-    // adds the button to copy new password to clipboard - UNFINISHED, DOES NOT WORK YET
-    var btn = document.createElement("button");
-    btn.innerHTML = "Copy to Clipboard";
-    document.body.getElementById("newPasswordContainer").appendChild(btn);
- }
+    };
 
+    var PasswordContainer = document.getElementById("newPasswordContainer");
+    PasswordContainer.classList.remove("d-none");
+
+    document.getElementById("newPW").value = newPassword; // Displays the new password
+ };
+
+document.getElementById("copyBtn").addEventListener("click", copyPW);
+
+function copyPW() {
+    var pw = document.getElementById("newPW");
+    pw.select();
+    document.execCommand("copy");
+    alert("Copied to Clipboard!");
+};
